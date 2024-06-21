@@ -1,14 +1,17 @@
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
-#include <iostream>
-
+#include <opencv2/opencv.hpp>
 using namespace cv;
-using namespace std;
-
-void main() {
-	string path = "resources/paper.jpg";
-	Mat img = imread(path);
-	imshow("Image", img);
-	waitKey(0);
+int main(int argc, char** argv)
+{
+    VideoCapture cap;
+    if(!cap.open(0))
+        return 0;
+    for(;;)
+    {
+          Mat frame;
+          cap >> frame;
+          if( frame.empty() ) break;
+          imshow("Cam Footage", frame);
+          if( waitKey(10) == 27 ) break;
+    }
+    return 0;
 }
