@@ -7,9 +7,46 @@
 using namespace cv;
 using namespace std;
 
-///////////////  Project 2 - Document Scanner  //////////////////////
 
-Mat imgOriginal, imgGray, imgBlur, imgCanny, imgThre, imgDil, imgErode, imgWarp, imgCrop;
+int main(int argc, char** argv)
+{
+    VideoCapture cap;
+    if(!cap.open(0))
+        return 0;
+    for(;;)
+    {
+          Mat frame;
+          cap >> frame;
+          if( frame.empty() ) break;
+          imshow("Cam Footage", frame);
+          if( waitKey(10) == 27 ) break;
+    }
+    return 0;
+}
+
+void applySepia(cv::Mat &frame)
+{
+  cv::Mat temp = frame.clone();
+  cv::transform(temp, frame, cv::Matx33f(
+    0.272, 0.534, 0.131,
+    0.349, 0.686, 0.168,
+    0.393, 0.769, 0.189)
+  );
+}
+
+void invertColors(cv::Mat &frame)
+{
+  cv::bitwise_not(frame, frame);
+}
+
+void applyGrayscale(cv::Mat &frame)
+{
+  cv::cvtColor(frame, frame, cv::COLOR_BGR2GRAY);
+}
+
+
+
+/* Mat imgOriginal, imgGray, imgBlur, imgCanny, imgThre, imgDil, imgErode, imgWarp, imgCrop;
 vector<Point> initialPoints,docPoints;
 float w = 420, h = 596;
 
@@ -20,7 +57,6 @@ Mat preProcessing(Mat img)
 	Canny(imgBlur, imgCanny, 25, 75);
 	Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
 	dilate(imgCanny, imgDil, kernel);
-	//erode(imgDil, imgErode, kernel);
 	return imgDil;
 }
 
@@ -30,7 +66,6 @@ vector<Point> getContours(Mat image) {
 	vector<Vec4i> hierarchy;
 
 	findContours(image, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-	//drawContours(img, contours, -1, Scalar(255, 0, 255), 2);
 	vector<vector<Point>> conPoly(contours.size());
 	vector<Rect> boundRect(contours.size());
 
@@ -39,8 +74,7 @@ vector<Point> getContours(Mat image) {
 
 	for (int i = 0; i < contours.size(); i++)
 	{
-		int area = contourArea(contours[i]);
-		//cout << area << endl;
+		int area = contourArea(contours[i]);                                                                                                                              szWA
 
 		string objectType;
 
@@ -51,12 +85,9 @@ vector<Point> getContours(Mat image) {
 
 			if (area > maxArea && conPoly[i].size()==4 ) {
 
-				//drawContours(imgOriginal, conPoly, i, Scalar(255, 0, 255), 5);
 				biggest = { conPoly[i][0],conPoly[i][1] ,conPoly[i][2] ,conPoly[i][3] };
 				maxArea = area;
 			}
-			//drawContours(imgOriginal, conPoly, i, Scalar(255, 0, 255), 2);
-			//rectangle(imgOriginal, boundRect[i].tl(), boundRect[i].br(), Scalar(0, 255, 0), 5);
 		}
 	}
 	return biggest;
@@ -105,16 +136,14 @@ void main() {
 
 	string path = "paper.jpg";
 	imgOriginal = imread(path);
-	//resize(imgOriginal, imgOriginal, Size(), 0.5, 0.5);
 
 	// Preprpcessing - Step 1 
 	imgThre = preProcessing(imgOriginal);
 
 	// Get Contours - Biggest  - Step 2
 	initialPoints = getContours(imgThre);
-	//drawPoints(initialPoints, Scalar(0, 0, 255));
+
 	docPoints = reorder(initialPoints);
-	//drawPoints(docPoints, Scalar(0, 255, 0));
 
 	// Warp - Step 3 
 	imgWarp = getWarp(imgOriginal, docPoints, w, h);
@@ -125,9 +154,13 @@ void main() {
 	imgCrop = imgWarp(roi);
 
 	imshow("Image", imgOriginal);
-	//imshow("Image Dilation", imgThre);
-	//imshow("Image Warp", imgWarp);
 	imshow("Image Crop", imgCrop);
 	waitKey(0);
 
+	imshow("Image", imgOriginal);
+	imshow("Image Crop", imgCrop);
+	waitKey(0);
+	
 }
+
+ */
