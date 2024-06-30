@@ -53,13 +53,16 @@ int main(int, char**)
         // show live and wait for a key with timeout long enough to show images
         imshow("CAMERA 1", frame);  // Window name
 
+        resize(frame, frame, Size(), 0.5, 0.5)
+        imgThre = preProcessing(frame)
+        getCountours()
 
         screenshot = cv::waitKey(30);
 
 
         if (screenshot == 'q') {
 
-            sprintf_s(filename, "./Frame_%d.jpg", c); // select your folder - filename is "Frame_n"
+            sprintf_s(filename, "./output/Frame_%d.jpg", c); // select your folder - filename is "Frame_n"
             cv::waitKey(10); 
 
             imshow("CAMERA 1", frame);
