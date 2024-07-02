@@ -1,85 +1,67 @@
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <stdio.h>
-#include <windows.h> // For Sleep
-
+#include<opencv2\core.hpp>
+#include<opencv2\imgcodecs.hpp>
+#include<opencv2\highgui.hpp>
+#include<opencv2\imgproc.hpp>
 
 using namespace cv;
-using namespace std;
+
+static Mat img;
+static Point origin;
+static Rect selection;
+static bool selectObject = false;
+static bool objectCropped = false;
+static Mat imgClone;
+
+static void onMouse(int event, int x, int y, int flags, void*) {
+	if (selectObject)
+	{
+		selection.x = min(x, origin.x);
+		selection.y = min(y, origin.y);
+		selection.width = abs(x - origin.x);
+		selection.height = abs(y - origin.y);
+
+		selection &= Rect(0, 0, img.cols, img.rows);
+	}
 
 
-int ct = 0; 
-char screenshot;
-char filename[100]; // For filename
-int  c = 1; // For filename
+	switch (event)
+	{
+	case EVENT_LBUTTONDOWN:
+		origin = Point(x, y);
+		selection = Rect(x, y, 0, 0);
+		selectObject = true;
+		break;
+	case EVENT_LBUTTONUP:
+		selectObject = false;
+		if (selection.width > 0 && selection.height > 0)
+			objectCropped = true;
+	default:
+		break;
+	}
+	img.copyTo(imgClone);
+	rectangle(imgClone, selection, Scalar(0, 0, 255), 1, 8, 0);
+	imshow("image", imgClone);
+}
 
-int main(int, char**)
-{
+int main() {
+	img = imread("paper.jpg");
+	namedWindow("image", WINDOW_AUTOSIZE);
+	setMouseCallback("image", onMouse);
+	imshow("image", img);
 
+	int d = 1;
+	while (d == 1)
+	{
+		if (objectCropped)
+		{
+			Mat crop = img(selection);
+			namedWindow("crop", WINDOW_AUTOSIZE);
+			imshow("crop", crop);
+			d = 0;
+		}
+		waitKey(10);
+	}
+	waitKey(0);
 
-    Mat frame;
-    //--- INITIALIZE VIDEOCAPTURE
-    VideoCapture cap;
-    // open the default camera using default API
-    cap.open(0);
-    // OR advance usage: select any API backend
-    int deviceID = 0;             // 0 = open default camera   
-    int apiID = cv::CAP_ANY;      // 0 = autodetect default API
-                                  // open selected camera using selected API
-    cap.open(deviceID + apiID);
-    // check if we succeeded
-    if (!cap.isOpened()) {
-        cerr << "ERROR! Unable to open camera\n";
-        return -1;
-    }
-    //--- GRAB AND WRITE LOOP
-    cout << "Start grabbing" << endl
-        << "Press a to terminate" << endl;
-    for (;;)
-    {
-        // wait for a new frame from camera and store it into 'frame'
-        cap.read(frame);
-
-        if (frame.empty()) {
-            cerr << "ERROR! blank frame grabbed\n";
-            break;
-        }
-
-
-        Sleep(5); // Sleep is mandatory - for no leg!
-
-
-
-        // show live and wait for a key with timeout long enough to show images
-        imshow("CAMERA 1", frame);  // Window name
-
-        resize(frame, frame, Size(), 0.5, 0.5)
-        imgThre = preProcessing(frame)
-        getCountours()
-
-        screenshot = cv::waitKey(30);
-
-
-        if (screenshot == 'q') {
-
-            sprintf_s(filename, "./output/Frame_%d.jpg", c); // select your folder - filename is "Frame_n"
-            cv::waitKey(10); 
-
-            imshow("CAMERA 1", frame);
-            imwrite(filename, frame);
-            cout << "Frame_" << c << endl;
-            c++;
-        }
-
-
-        if (screenshot == 'a') {
-            cout << "Terminating..." << endl;
-            Sleep(2000);
-            break;
-        }
-
-
-    }
-    // the camera will be deinitialized automatically in VideoCapture destructor
-    return 0;
+	return 0;
 }
