@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 7/1/2024 7:42:20 PM.
+      Build started 7/2/2024 10:58:58 PM.
       
       Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\3.30.0-rc1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -53,7 +53,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.35
+      Time Elapsed 00:00:01.36
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-      Build started 7/1/2024 7:42:22 PM.
+      Build started 7/2/2024 10:59:00 PM.
       
       Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\3.30.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -127,48 +127,48 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-ua5f7e"
-      binary: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-ua5f7e"
+      source: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-1z6t5d"
+      binary: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-1z6t5d"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-ua5f7e'
+        Change Dir: 'C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-1z6t5d'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ea7ec.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b90c2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 7/1/2024 7:42:24 PM.
+        Build started 7/2/2024 10:59:02 PM.
         
-        Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ua5f7e\\cmTC_ea7ec.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1z6t5d\\cmTC_b90c2.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_ea7ec.dir\\Debug\\".
+          Creating directory "cmTC_b90c2.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ua5f7e\\Debug\\".
-          Creating directory "cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.tlog\\".
+          Creating directory "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1z6t5d\\Debug\\".
+          Creating directory "cmTC_b90c2.dir\\Debug\\cmTC_b90c2.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.tlog\\unsuccessfulbuild".
+          Creating "cmTC_b90c2.dir\\Debug\\cmTC_b90c2.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_b90c2.dir\\Debug\\cmTC_b90c2.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ea7ec.dir\\Debug\\\\" /Fd"cmTC_ea7ec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b90c2.dir\\Debug\\\\" /Fd"cmTC_b90c2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33811 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ea7ec.dir\\Debug\\\\" /Fd"cmTC_ea7ec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b90c2.dir\\Debug\\\\" /Fd"cmTC_b90c2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ua5f7e\\Debug\\cmTC_ea7ec.exe" /INCREMENTAL /ILK:"cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-ua5f7e/Debug/cmTC_ea7ec.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-ua5f7e/Debug/cmTC_ea7ec.lib" /MACHINE:X64  /machine:x64 cmTC_ea7ec.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_ea7ec.vcxproj -> C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ua5f7e\\Debug\\cmTC_ea7ec.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1z6t5d\\Debug\\cmTC_b90c2.exe" /INCREMENTAL /ILK:"cmTC_b90c2.dir\\Debug\\cmTC_b90c2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-1z6t5d/Debug/cmTC_b90c2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-1z6t5d/Debug/cmTC_b90c2.lib" /MACHINE:X64  /machine:x64 cmTC_b90c2.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_b90c2.vcxproj -> C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1z6t5d\\Debug\\cmTC_b90c2.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.tlog\\unsuccessfulbuild".
-          Touching "cmTC_ea7ec.dir\\Debug\\cmTC_ea7ec.tlog\\cmTC_ea7ec.lastbuildstate".
-        Done Building Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ua5f7e\\cmTC_ea7ec.vcxproj" (default targets).
+          Deleting file "cmTC_b90c2.dir\\Debug\\cmTC_b90c2.tlog\\unsuccessfulbuild".
+          Touching "cmTC_b90c2.dir\\Debug\\cmTC_b90c2.tlog\\cmTC_b90c2.lastbuildstate".
+        Done Building Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1z6t5d\\cmTC_b90c2.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.34
+        Time Elapsed 00:00:01.33
         
       exitCode: 0
   -
@@ -208,8 +208,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-larfg9"
-      binary: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-larfg9"
+      source: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-hk6baq"
+      binary: "C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-hk6baq"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
@@ -217,40 +217,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-larfg9'
+        Change Dir: 'C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-hk6baq'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_df06b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7a76d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.10.4+10fbfbf2e for .NET Framework
-        Build started 7/1/2024 7:42:26 PM.
+        Build started 7/2/2024 10:59:04 PM.
         
-        Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-larfg9\\cmTC_df06b.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hk6baq\\cmTC_7a76d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_df06b.dir\\Debug\\".
+          Creating directory "cmTC_7a76d.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-larfg9\\Debug\\".
-          Creating directory "cmTC_df06b.dir\\Debug\\cmTC_df06b.tlog\\".
+          Creating directory "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hk6baq\\Debug\\".
+          Creating directory "cmTC_7a76d.dir\\Debug\\cmTC_7a76d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_df06b.dir\\Debug\\cmTC_df06b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_df06b.dir\\Debug\\cmTC_df06b.tlog\\unsuccessfulbuild".
+          Creating "cmTC_7a76d.dir\\Debug\\cmTC_7a76d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7a76d.dir\\Debug\\cmTC_7a76d.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_df06b.dir\\Debug\\\\" /Fd"cmTC_df06b.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7a76d.dir\\Debug\\\\" /Fd"cmTC_7a76d.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33811 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_df06b.dir\\Debug\\\\" /Fd"cmTC_df06b.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7a76d.dir\\Debug\\\\" /Fd"cmTC_7a76d.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-larfg9\\Debug\\cmTC_df06b.exe" /INCREMENTAL /ILK:"cmTC_df06b.dir\\Debug\\cmTC_df06b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-larfg9/Debug/cmTC_df06b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-larfg9/Debug/cmTC_df06b.lib" /MACHINE:X64  /machine:x64 cmTC_df06b.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_df06b.vcxproj -> C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-larfg9\\Debug\\cmTC_df06b.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hk6baq\\Debug\\cmTC_7a76d.exe" /INCREMENTAL /ILK:"cmTC_7a76d.dir\\Debug\\cmTC_7a76d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-hk6baq/Debug/cmTC_7a76d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/CMakeScratch/TryCompile-hk6baq/Debug/cmTC_7a76d.lib" /MACHINE:X64  /machine:x64 cmTC_7a76d.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_7a76d.vcxproj -> C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hk6baq\\Debug\\cmTC_7a76d.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_df06b.dir\\Debug\\cmTC_df06b.tlog\\unsuccessfulbuild".
-          Touching "cmTC_df06b.dir\\Debug\\cmTC_df06b.tlog\\cmTC_df06b.lastbuildstate".
-        Done Building Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-larfg9\\cmTC_df06b.vcxproj" (default targets).
+          Deleting file "cmTC_7a76d.dir\\Debug\\cmTC_7a76d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_7a76d.dir\\Debug\\cmTC_7a76d.tlog\\cmTC_7a76d.lastbuildstate".
+        Done Building Project "C:\\Users\\Amir\\Documents\\NewCodingProjects\\opencvDocScanner\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hk6baq\\cmTC_7a76d.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.38
+        Time Elapsed 00:00:01.33
         
       exitCode: 0
   -

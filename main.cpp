@@ -1,67 +1,74 @@
-#include<opencv2\core.hpp>
-#include<opencv2\imgcodecs.hpp>
-#include<opencv2\highgui.hpp>
-#include<opencv2\imgproc.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <iostream>
 
 using namespace cv;
-
-static Mat img;
-static Point origin;
-static Rect selection;
-static bool selectObject = false;
-static bool objectCropped = false;
-static Mat imgClone;
-
-static void onMouse(int event, int x, int y, int flags, void*) {
-	if (selectObject)
-	{
-		selection.x = min(x, origin.x);
-		selection.y = min(y, origin.y);
-		selection.width = abs(x - origin.x);
-		selection.height = abs(y - origin.y);
-
-		selection &= Rect(0, 0, img.cols, img.rows);
-	}
-
-
-	switch (event)
-	{
-	case EVENT_LBUTTONDOWN:
-		origin = Point(x, y);
-		selection = Rect(x, y, 0, 0);
-		selectObject = true;
-		break;
-	case EVENT_LBUTTONUP:
-		selectObject = false;
-		if (selection.width > 0 && selection.height > 0)
-			objectCropped = true;
-	default:
-		break;
-	}
-	img.copyTo(imgClone);
-	rectangle(imgClone, selection, Scalar(0, 0, 255), 1, 8, 0);
-	imshow("image", imgClone);
-}
+using namespace std;
 
 int main() {
-	img = imread("paper.jpg");
-	namedWindow("image", WINDOW_AUTOSIZE);
-	setMouseCallback("image", onMouse);
-	imshow("image", img);
+    // Load the image
+    Mat image = imread("paper.jpg");
 
-	int d = 1;
-	while (d == 1)
-	{
-		if (objectCropped)
-		{
-			Mat crop = img(selection);
-			namedWindow("crop", WINDOW_AUTOSIZE);
-			imshow("crop", crop);
-			d = 0;
-		}
-		waitKey(10);
-	}
-	waitKey(0);
+    // Check if the image is loaded
+    if(image.empty()) {
+        cout << "Could not open or find the image" << endl;
+        return -1;
+    }
 
-	return 0;
+    // Display the original image
+    namedWindow("image", WINDOW_FREERATIO);
+    imshow("image", image);
+    waitKey(0);
+
+    // Define the rectangle to crop
+    Rect croppedRectangle = Rect(537, 561, 450, 140);
+    // Crop the image
+    Mat CroppedImage = image(croppedRectangle);
+
+    // Display the cropped image
+    namedWindow("Cropped", WINDOW_FREERATIO);
+    imshow("Cropped", CroppedImage);
+
+    // Output the size of the cropped image
+    cout << CroppedImage.size() << endl;
+    waitKey(0);
+
+    return 0;
+}
+
+/* --OPEN FILE EXPLORER, LET USER IMPORT IMAGE TO CONVERT
+#include <iostream>
+#include <Windows.h>
+
+using namespace std;
+
+string fileDialog(LPCSTR fileType) {
+    OPENFILENAMEA ofn;
+    char szFile[300];
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = NULL;
+    ofn.lpstrFile = szFile;
+    ofn.lpstrFile[0] = '\0';
+    ofn.nFilterIndex = 1;
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = fileType;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+    if (GetOpenFileNameA(&ofn)) {
+        return ofn.lpstrFile;
+    }
+    return "";
+}
+
+int main()
+{
+    cout << fileDialog("Any File\0*") << endl;
+    cout << fileDialog("EXE File\0*.exe") << endl;
+    cout << fileDialog("MP4 File\0*.mp4") << endl;
+    return 0;
 }
