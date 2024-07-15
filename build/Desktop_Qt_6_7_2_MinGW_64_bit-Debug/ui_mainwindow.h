@@ -26,6 +26,7 @@ public:
     QWidget *centralwidget;
     QPushButton *pushButton;
     QLabel *label;
+    QLabel *label_pic;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -44,6 +45,10 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(170, 60, 151, 21));
+        label_pic = new QLabel(centralwidget);
+        label_pic->setObjectName("label_pic");
+        label_pic->setGeometry(QRect(170, 150, 371, 311));
+        label_pic->setMaximumSize(QSize(450, 400));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -62,7 +67,8 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Browse..", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Load your iamge", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Load your image", nullptr));
+        label_pic->setText(QString());
     } // retranslateUi
 
 };

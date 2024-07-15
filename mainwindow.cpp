@@ -21,12 +21,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath(), tr("Images (.png *.xpm *,jpg)"));
+    QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath(), tr("Images (*.png *.xpm *.jpg)"));
 
     if (!file_name.isEmpty()) {
         QMessageBox::information(this, "...", file_name);
         QImage img(file_name);
         QPixmap pix = QPixmap::fromImage(img);
+
+        int w = ui->label_pic->width();
+        int h = ui->label_pic->height();
+
+        ui->label_pic->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
     }
 }
 
