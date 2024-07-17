@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
+#include <QtMultimedia>
+#include <QtMultimediaWidgets>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,6 +26,12 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    void start_Camera();
+    void stop_camera();
+
+
+private:
     Ui::MainWindow *ui;
+    QScopedPointer<QCamera> M_Camera;
 };
 #endif // MAINWINDOW_H

@@ -35,3 +35,13 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
+void MainWindow::start_Camera()
+{
+    M_Camera->start();
+}
+
+void MainWindow::stop_camera()
+{
+    M_Camera->stop();
+
+}
