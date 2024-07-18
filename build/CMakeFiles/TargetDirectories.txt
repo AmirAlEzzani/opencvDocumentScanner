@@ -1,0 +1,3 @@
+C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/OpenCVExample.dir
+C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Amir/Documents/NewCodingProjects/opencvDocScanner/build/CMakeFiles/ZERO_CHECK.dir
