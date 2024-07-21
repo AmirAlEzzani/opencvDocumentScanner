@@ -6,11 +6,8 @@ using namespace cv;
 using namespace std;
 int main()
 {
-    Mat img = cv::imread("C:/Users/Amir/source/repos/docScannerGUI/docScannerGUI/IMG_9730.jpg");
-    namedWindow("First OpenCV Application", WINDOW_AUTOSIZE);
-    imshow("First OpenCV Application", img);
-    moveWindow("First OpenCV Application", 0, 45);
+    Mat image = imread("C:/Users/Amir/source/repos/docScannerGUI/docScannerGUI/IMG_9730.jpg",0);
+    namedWindow("test", 0);
+    imshow("test", image);
     waitKey(0);
-    destroyAllWindows();
-    return 0;
 }
