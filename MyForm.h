@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2\imgcodecs.hpp>   
 #include <iostream>
+#include <windows.h>
 namespace docScannerGUI {
 
 	using namespace System;
@@ -14,7 +15,10 @@ namespace docScannerGUI {
 	using namespace cv;
 
 	Mat src = imread("C:/Users/Amir/source/repos/docScannerGUI/docScannerGUI/IMG_9730.jpg", 0);
-
+	int ct = 0;
+	char screenshot;
+	char filename[100]; // For filename
+	int  c = 1; // For filename
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
@@ -129,13 +133,47 @@ namespace docScannerGUI {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		VideoCapture cap(0);
 		Mat edges;
-		namedWindow("webcam", 1);
 		while (true)
 		{
 			Mat frame;
 			cap >> frame;
-			imshow("webcam", frame);
-			if (waitKey(0) >= 0) break;
+			for (;;)
+			{
+				// wait for a new frame from camera and store it into 'frame'
+				cap.read(frame);
+
+				if (frame.empty()) {
+					cerr << "ERROR! blank frame grabbed\n";
+					break;
+				}
+
+
+
+				// show live and wait for a key with timeout long enough to show images
+				imshow("CAMERA 1", frame);  // Window name
+				imshow("CAMERA 1", frame);  // Window name
+
+
+				screenshot = cv::waitKey(30);
+
+
+				if (screenshot == ' ') {
+
+					sprintf_s(filename, "./Frame_%d.jpg", c); // select your folder - filename is "Frame_n"
+					cv::waitKey(45);
+
+					imshow("CAMERA 1", frame);
+					imwrite(filename, frame);
+					cout << "Frame_" << c << endl;
+					c++;
+				}
+
+				if (screenshot == 'a') {
+					cout << "Terminating..." << endl;
+					Sleep(5000); //find way to close cam window without closing app itself
+					break;
+				}
+			}
 		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
