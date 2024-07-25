@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <winuser.h>
 #include <msclr/marshal_cppstd.h>
+#include "MyForm1.h"
 
 namespace docScannerGUI {
 
@@ -18,24 +19,15 @@ namespace docScannerGUI {
     using namespace std;
     using namespace cv;
 
-    /// <summary>
-    /// Summary for MyForm
-    /// </summary>
     public ref class MyForm : public System::Windows::Forms::Form
     {
     public:
         MyForm(void)
         {
             InitializeComponent();
-            //
-            //TODO: Add the constructor code here
-            //
         }
 
     protected:
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
         ~MyForm()
         {
             if (components)
@@ -43,6 +35,7 @@ namespace docScannerGUI {
                 delete components;
             }
         }
+
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::Button^ button2;
     private: System::Windows::Forms::Button^ button1;
@@ -51,10 +44,6 @@ namespace docScannerGUI {
     protected:
 
 #pragma region Windows Form Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         void InitializeComponent(void)
         {
             this->label1 = (gcnew System::Windows::Forms::Label());
@@ -114,7 +103,6 @@ namespace docScannerGUI {
             this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
             this->ResumeLayout(false);
             this->PerformLayout();
-
         }
 #pragma endregion
 
@@ -141,7 +129,6 @@ namespace docScannerGUI {
         namedWindow(windowName.c_str());
 
         while (true) {
-            // wait for a new frame from camera and store it into 'frame'
             cap.read(frame);
 
             if (frame.empty()) {
@@ -149,7 +136,6 @@ namespace docScannerGUI {
                 break;
             }
 
-            // show live and wait for a key with timeout long enough to show images
             imshow(windowName.c_str(), frame);
 
             screenshot = cv::waitKey(30);
@@ -159,56 +145,44 @@ namespace docScannerGUI {
                 imwrite(filename, frame);
                 Sleep(1000);
                 cout << "Screenshot Taken";
-                // open new window with screenshot embedded and option to either use image or retake
-                
 
-                cv::Mat ss = cv::imread("./input.jpg");
-
-                cv::imshow("Loaded Image", ss);
-                cv::waitKey(0);
-                cv::destroyWindow("Loaded Image");
+                // Open the new form with screenshot
+                MyForm1^ Mf1 = gcnew MyForm1();
+                Mf1->ShowDialog();
             }
 
             if (screenshot == 27) {
                 cout << "Terminating..." << endl;
-                destroyWindow(windowName.c_str()); // Close the window without terminating the application
+                destroyWindow(windowName.c_str());
                 break;
             }
         }
 
-        // Release the camera
         cap.release();
     }
 
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-    OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
-    openFileDialog1->InitialDirectory = "c:\\";
-    openFileDialog1->Filter = "Image Files|*.bmp;*.jpg;*.jpeg;*.png|All Files|*.*";
-    openFileDialog1->FilterIndex = 1;
-    openFileDialog1->RestoreDirectory = true;
+    private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+        OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
+        openFileDialog1->InitialDirectory = "c:\\";
+        openFileDialog1->Filter = "Image Files|*.bmp;*.jpg;*.jpeg;*.png|All Files|*.*";
+        openFileDialog1->FilterIndex = 1;
+        openFileDialog1->RestoreDirectory = true;
 
-    if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-        // Get the selected file path
-        System::String^ filePath = openFileDialog1->FileName;
+        if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+            System::String^ filePath = openFileDialog1->FileName;
+            std::string filePathStr = msclr::interop::marshal_as<std::string>(filePath);
+            std::cout << "Selected file path: " << filePathStr << std::endl;
 
-        // Convert the file path to std::string
-        std::string filePathStr = msclr::interop::marshal_as<std::string>(filePath);
+            cv::Mat img = cv::imread(filePathStr, cv::IMREAD_COLOR);
+            if (img.empty()) {
+                std::cerr << "ERROR! Unable to load image\n";
+                return;
+            }
 
-        // Print the file path
-        std::cout << "Selected file path: " << filePathStr << std::endl;
-
-        // Load and display the image
-        cv::Mat img = cv::imread(filePathStr, cv::IMREAD_COLOR);
-        if (img.empty()) {
-            std::cerr << "ERROR! Unable to load image\n";
-            return;
+            cv::imshow("Loaded Image", img);
+            cv::waitKey(0);
+            cv::destroyWindow("Loaded Image");
         }
-
-        // Display the loaded image
-        cv::imshow("Loaded Image", img);
-        cv::waitKey(0);
-        cv::destroyWindow("Loaded Image");
     }
-}
     };
 }
