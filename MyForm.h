@@ -153,6 +153,7 @@ namespace docScannerGUI {
 
             if (screenshot == 27) {
                 cout << "Terminating..." << endl;
+                
                 destroyWindow(windowName.c_str());
                 break;
             }
@@ -170,6 +171,11 @@ namespace docScannerGUI {
 
         if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
             System::String^ filePath = openFileDialog1->FileName;
+
+            // Copy the selected file to input.jpg
+            System::String^ destinationPath = "input.jpg";
+            System::IO::File::Copy(filePath, destinationPath, true);
+
             std::string filePathStr = msclr::interop::marshal_as<std::string>(filePath);
             std::cout << "Selected file path: " << filePathStr << std::endl;
 
@@ -179,10 +185,13 @@ namespace docScannerGUI {
                 return;
             }
 
+            MyForm1^ Mf1 = gcnew MyForm1();
+            Mf1->ShowDialog();
             cv::imshow("Loaded Image", img);
             cv::waitKey(0);
             cv::destroyWindow("Loaded Image");
         }
     }
+    
     };
 }

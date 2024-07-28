@@ -70,7 +70,7 @@ namespace docScannerGUI {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(363, 37);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Is this screenshot good\?";
+			this->label1->Text = L"Use this image\?";
 			// 
 			// button1
 			// 
@@ -102,6 +102,7 @@ namespace docScannerGUI {
 			this->pictureBox1->Size = System::Drawing::Size(317, 251);
 			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &MyForm1::pictureBox1_Click);
 			// 
 			// MyForm1
 			// 
@@ -118,9 +119,14 @@ namespace docScannerGUI {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			pictureBox1->Image = System::Drawing::Image::FromFile(L"./input.jpg");
+
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+};
 }
