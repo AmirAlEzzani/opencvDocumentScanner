@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <winuser.h>
 #include <msclr/marshal_cppstd.h>
-#include "MyForm1.h"
+#include "MyForm22.h"
 
 namespace docScannerGUI {
 
@@ -57,7 +57,7 @@ namespace docScannerGUI {
             this->label1->AutoSize = true;
             this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label1->Location = System::Drawing::Point(510, 64);
+            this->label1->Location = System::Drawing::Point(450, 80);
             this->label1->Name = L"label1";
             this->label1->Size = System::Drawing::Size(288, 29);
             this->label1->TabIndex = 0;
@@ -82,7 +82,7 @@ namespace docScannerGUI {
             // 
             this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24));
             this->button2->ForeColor = System::Drawing::SystemColors::ButtonFace;
-            this->button2->Location = System::Drawing::Point(747, 202);
+            this->button2->Location = System::Drawing::Point(666, 202);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(279, 190);
             this->button2->TabIndex = 2;
@@ -103,6 +103,7 @@ namespace docScannerGUI {
             this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
             this->ResumeLayout(false);
             this->PerformLayout();
+
         }
 #pragma endregion
 
@@ -147,13 +148,13 @@ namespace docScannerGUI {
                 cout << "Screenshot Taken";
 
                 // Open the new form with screenshot
-                MyForm1^ Mf1 = gcnew MyForm1();
-                Mf1->ShowDialog();
+                MyForm22^ Mf22 = gcnew MyForm22();
+                Mf22->ShowDialog();
             }
 
             if (screenshot == 27) {
                 cout << "Terminating..." << endl;
-                
+
                 destroyWindow(windowName.c_str());
                 break;
             }
@@ -185,13 +186,13 @@ namespace docScannerGUI {
                 return;
             }
 
-            MyForm1^ Mf1 = gcnew MyForm1();
-            Mf1->ShowDialog();
+            MyForm22^ Mf22 = gcnew MyForm22();
+            Mf22->ShowDialog();
             cv::imshow("Loaded Image", img);
             cv::waitKey(0);
             cv::destroyWindow("Loaded Image");
         }
     }
-    
+
     };
 }

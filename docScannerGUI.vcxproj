@@ -125,7 +125,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
+    <ClCompile Include="MyForm22.cpp" />
+    <ClCompile Include="MyForm23.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -138,7 +139,10 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="MyForm22.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyForm23.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -146,8 +150,11 @@
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <DependentUpon>MyForm1.h</DependentUpon>
+    <EmbeddedResource Include="MyForm22.resx">
+      <DependentUpon>MyForm22.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm23.resx">
+      <DependentUpon>MyForm23.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

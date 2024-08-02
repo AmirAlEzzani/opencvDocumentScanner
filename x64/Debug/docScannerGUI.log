@@ -1,7 +1,11 @@
 ﻿  MyForm.cpp
 C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\MyForm.cpp(6,6): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  MyForm1.cpp
+  MyForm22.cpp
   Generating Code...
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(113,1): warning C4793: 'cv::cuda::GpuMat::GpuMat': function compiled as native:
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(113,1): warning C4793: 	Found an intrinsic not supported in managed code
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(511,1): warning C4793: 'cv::cuda::HostMem::HostMem': function compiled as native:
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(511,1): warning C4793: 	Found an intrinsic not supported in managed code
 C:\opencv\build\include\opencv2\core\cuda.inl.hpp(113,1): warning C4793: 'cv::cuda::GpuMat::GpuMat': function compiled as native:
 C:\opencv\build\include\opencv2\core\cuda.inl.hpp(113,1): warning C4793: 	Found an intrinsic not supported in managed code
 C:\opencv\build\include\opencv2\core\cuda.inl.hpp(511,1): warning C4793: 'cv::cuda::HostMem::HostMem': function compiled as native:

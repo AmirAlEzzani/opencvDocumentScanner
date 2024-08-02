@@ -1,4 +1,11 @@
 #pragma once
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <iostream>
+#include <windows.h>
+#include <winuser.h>
+#include <msclr/marshal_cppstd.h>
+#include "MyForm21.h"
 
 namespace docScannerGUI {
 
@@ -68,7 +75,7 @@ namespace docScannerGUI {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(410, 52);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(363, 37);
+			this->label1->Size = System::Drawing::Size(245, 37);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Use this image\?";
 			// 
@@ -94,6 +101,7 @@ namespace docScannerGUI {
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"Retake";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
 			// 
 			// pictureBox1
 			// 
@@ -119,14 +127,19 @@ namespace docScannerGUI {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			pictureBox1->Image = System::Drawing::Image::FromFile(L"./input.jpg");
-
 		}
 #pragma endregion
+
+		//keep
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm21^ Mf21 = gcnew MyForm21();
+		Mf21->ShowDialog();
 	}
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
+		   //retake
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
