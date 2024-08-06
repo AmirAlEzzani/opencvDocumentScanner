@@ -1,5 +1,0 @@
-C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\x64\Debug\docScannerGUI.vcxproj.AssemblyReference.cache
-C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\x64\Debug\docScannerGUI.MyForm.resources
-C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\x64\Debug\docScannerGUI.vcxproj.GenerateResource.cache
-C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\x64\Debug\docScannerGUI.MyForm22.resources
-C:\Users\Amir\source\repos\docScannerGUI\docScannerGUI\x64\Debug\docScannerGUI.MyForm23.resources
