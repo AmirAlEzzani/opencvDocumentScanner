@@ -27,6 +27,7 @@ public:
     QLabel *label;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,6 +47,11 @@ public:
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName("pushButton_2");
         pushButton_2->setGeometry(QRect(500, 350, 80, 24));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(290, 150, 241, 131));
+        label_2->setFrameShape(QFrame::Panel);
+        label_2->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -66,6 +72,7 @@ public:
         label->setText(QCoreApplication::translate("MainWindow", "Choose input for document", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Use CAmera", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Upload file", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };
