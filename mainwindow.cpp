@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "iostream"
+#include "QProcess"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,12 +23,11 @@ MainWindow::MainWindow(QWidget *parent)
     cv::drawContours(mask,contours,-1,cv::Scalar(0,0,255),1);
     std::cout<<contours[0]<<std::endl;
 
-
     cv::imshow("output", mask);
    /* cv::imwrite("Newimage.jpg", Image);
     cv::namedWindow("Image Display", cv::WINDOW_NORMAL);
     cv::imshow("image Display, Image", Image); */
-
+    QProcess::execute("C:/Users/Amir/Documents/qtdocscan/tesseract.exe testimage.jpg test");
 }
 
 MainWindow::~MainWindow()
