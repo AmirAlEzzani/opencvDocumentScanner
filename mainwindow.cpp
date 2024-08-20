@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "iostream"
 #include "QProcess"
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "OpenCV Maj Ver :" << CV_VERSION_MAJOR;
     qDebug() << "OpenCV Min Ver :" << CV_VERSION_MINOR;
 
-    cv::Mat Image = cv::imread("C:/Users/Amir/Documents/qtdocscan/testimage.jpg",cv::IMREAD_GRAYSCALE);
+    cv::Mat Image = cv::imread("C:/Users/Amir/Documents/qtdocscan/input.jpg",cv::IMREAD_GRAYSCALE);
     cv::Mat Output;
     cv::threshold(Image,Output,100,255,cv::THRESH_BINARY);
     std::vector<std::vector<cv::Point>> contours;
@@ -27,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
    /* cv::imwrite("Newimage.jpg", Image);
     cv::namedWindow("Image Display", cv::WINDOW_NORMAL);
     cv::imshow("image Display, Image", Image); */
-    QProcess::execute("C:/Users/Amir/Documents/qtdocscan/tesseract.exe testimage.jpg test");
+    system("C:/Users/Amir/Documents/qtdocscan/run.bat");
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +39,44 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    cv::VideoCapture cap(0);
+    if (!cap.isOpened()) {
+        std::cerr << "ERROR! Unable to open camera\n";
+        return;
+    }
 
+    cv::Mat frame;
+    int c = 0;
+    char filename[100];
+    int screenshot;
+    const std::string windowName = "Use Spacebar to capture screenshot";
+    cv::namedWindow(windowName.c_str());
+
+    while (true) {
+        cap.read(frame);
+
+        if (frame.empty()) {
+            std::cerr << "ERROR! blank frame grabbed\n";
+            break;
+        }
+
+        imshow(windowName.c_str(), frame);
+
+        screenshot = cv::waitKey(30);
+
+        if (screenshot == ' ') {
+            sprintf_s(filename, sizeof(filename), "./input.jpg"); //???
+            imwrite(filename, frame);
+            std::cout << "Screenshot Taken";
+        }
+
+        if (screenshot == 27) {
+            std::cout << "Terminating..." << std::endl;
+            cv::destroyWindow(windowName.c_str());
+            break;
+        }
+    }
+
+    cap.release();
 }
 
