@@ -16,6 +16,7 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
+    confirmation.ui \
     mainwindow.ui
 
 # Default rules for deployment.

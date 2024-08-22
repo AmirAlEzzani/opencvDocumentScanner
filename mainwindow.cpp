@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+ #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "iostream"
 #include "QProcess"
@@ -22,13 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     cv::findContours(Output,contours,hierarchy,cv::RETR_LIST,cv::CHAIN_APPROX_SIMPLE);
     cv::Mat mask = cv::Mat::zeros(Output.size(),CV_8UC3);
-    cv::drawContours(mask,contours,-1,cv::Scalar(0,0,255),1);
+    cv::drawContours(mask,contours,-1,cv::Scalar(0,255,255),1);
     std::cout<<contours[0]<<std::endl;
+    //add cropping, de-warping, better sharpening
 
     cv::imshow("output", mask);
-   /* cv::imwrite("Newimage.jpg", Image);
+    cv::imwrite("output.jpg", Image);
     cv::namedWindow("Image Display", cv::WINDOW_NORMAL);
-    cv::imshow("image Display, Image", Image); */
+    cv::imshow("image Display, Image", Image);
     system("C:/Users/Amir/Documents/qtdocscan/run.bat");
 }
 
@@ -37,26 +38,26 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    cv::VideoCapture cap(0);
+void MainWindow::on_pushButton_clicked() {
+    using namespace std;
+    using namespace cv;
+    VideoCapture cap(0);
     if (!cap.isOpened()) {
-        std::cerr << "ERROR! Unable to open camera\n";
-        return;
+    cerr << "ERROR! Unable to open camera\n";
+    return;
     }
 
-    cv::Mat frame;
-    int c = 0;
+    Mat frame;
     char filename[100];
     int screenshot;
-    const std::string windowName = "Use Spacebar to capture screenshot";
-    cv::namedWindow(windowName.c_str());
+    const std::string windowName = "CAMERA 1";
+    namedWindow(windowName.c_str());
 
     while (true) {
         cap.read(frame);
 
         if (frame.empty()) {
-            std::cerr << "ERROR! blank frame grabbed\n";
+            cerr << "ERROR! blank frame grabbed\n";
             break;
         }
 
@@ -65,18 +66,22 @@ void MainWindow::on_pushButton_clicked()
         screenshot = cv::waitKey(30);
 
         if (screenshot == ' ') {
-            sprintf_s(filename, sizeof(filename), "./input.jpg"); //???
+            sprintf_s(filename, sizeof(filename), "./input.jpg");
             imwrite(filename, frame);
-            std::cout << "Screenshot Taken";
+            cout << "Screenshot Taken";
+            //display input.jpg in confirmation.ui
+            // Open the confirmation form with screenshot <--------------------------
         }
 
         if (screenshot == 27) {
-            std::cout << "Terminating..." << std::endl;
-            cv::destroyWindow(windowName.c_str());
+            cout << "Terminating..." << endl;
+
+            destroyWindow(windowName.c_str());
             break;
         }
     }
-
+//convert jpg to pdf and add download button
     cap.release();
 }
+
 
