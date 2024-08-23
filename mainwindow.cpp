@@ -4,6 +4,7 @@
 #include "QProcess"
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include "confirm.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -69,6 +70,10 @@ void MainWindow::on_pushButton_clicked() {
             sprintf_s(filename, sizeof(filename), "./input.jpg");
             imwrite(filename, frame);
             cout << "Screenshot Taken";
+            this->hide();
+            confirm confirm;
+            confirm.setModal(true);
+            confirm.exec();
             //display input.jpg in confirmation.ui
             // Open the confirmation form with screenshot <--------------------------
         }
