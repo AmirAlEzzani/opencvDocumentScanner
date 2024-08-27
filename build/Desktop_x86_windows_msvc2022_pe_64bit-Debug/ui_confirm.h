@@ -31,12 +31,12 @@ public:
         confirm->resize(893, 596);
         buttonBox = new QDialogButtonBox(confirm);
         buttonBox->setObjectName("buttonBox");
-        buttonBox->setGeometry(QRect(200, 400, 341, 32));
+        buttonBox->setGeometry(QRect(190, 470, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         confirmImg = new QLabel(confirm);
         confirmImg->setObjectName("confirmImg");
-        confirmImg->setGeometry(QRect(140, 0, 661, 391));
+        confirmImg->setGeometry(QRect(100, 20, 711, 441));
 
         retranslateUi(confirm);
         QObject::connect(buttonBox, &QDialogButtonBox::accepted, confirm, qOverload<>(&QDialog::accept));
