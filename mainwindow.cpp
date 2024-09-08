@@ -49,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     cv::Mat cornersImage = graymask.clone(); // Clone the original image to draw corners on
     std::vector<cv::Point2f> cornersList;
-    cv::goodFeaturesToTrack(graymask, cornersList, 10, 0.01, 10);
+    cv::goodFeaturesToTrack(graymask, cornersList, 10, 0.01, 360);
 
     for (const auto& corner : cornersList) {
         cv::circle(cornersImage, corner, 5, cv::Scalar(255, 0, 0), -1); // Draw corners
