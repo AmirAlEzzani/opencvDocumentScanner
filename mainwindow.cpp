@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "OpenCV Maj Ver :" << CV_VERSION_MAJOR;
     qDebug() << "OpenCV Min Ver :" << CV_VERSION_MINOR;
 
-    cv::Mat input = cv::imread("C:/Users/Amir/Documents/qtdocscan/paper.jpg", cv::IMREAD_GRAYSCALE);
+    cv::Mat input = cv::imread("C:/Users/Amir/Documents/qtdocscan/testinput.jpg", cv::IMREAD_GRAYSCALE);
     cv::Mat Image;
     cv::resize(input, Image, cv::Size(), 0.75, 0.75);
     cv::Mat Output;
@@ -49,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     cv::Mat cornersImage = graymask.clone(); // Clone the original image to draw corners on
     std::vector<cv::Point2f> cornersList;
-    cv::goodFeaturesToTrack(graymask, cornersList, 10, 0.01, 360);
+    cv::goodFeaturesToTrack(graymask, cornersList, 4, 0.05, 300);
 
     for (const auto& corner : cornersList) {
         cv::circle(cornersImage, corner, 5, cv::Scalar(255, 0, 0), -1); // Draw corners
