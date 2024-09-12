@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "OpenCV Maj Ver :" << CV_VERSION_MAJOR;
     qDebug() << "OpenCV Min Ver :" << CV_VERSION_MINOR;
 
-    cv::Mat input = cv::imread("C:/Users/Amir/Documents/qtdocscan/testinput.jpg", cv::IMREAD_GRAYSCALE);
+    cv::Mat input = cv::imread("C:/Users/Amir/Documents/qtdocscan/paper.jpg", cv::IMREAD_GRAYSCALE);
     cv::Mat Image;
     cv::resize(input, Image, cv::Size(), 0.75, 0.75);
     cv::Mat Output;
@@ -33,10 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
         if (area > maxArea) {
             maxArea = area;
             largestContourIdx = i;
-         }
+        }
     }
-
-
 
     cv::Mat mask = cv::Mat::zeros(Output.size(), CV_8UC3);
     cv::Mat graymask;
@@ -45,27 +43,70 @@ MainWindow::MainWindow(QWidget *parent)
     }
     cv::cvtColor(mask, graymask, cv::COLOR_BGR2GRAY);
 
-
-
     cv::Mat cornersImage = graymask.clone(); // Clone the original image to draw corners on
     std::vector<cv::Point2f> cornersList;
     cv::goodFeaturesToTrack(graymask, cornersList, 4, 0.05, 300);
 
     for (const auto& corner : cornersList) {
+        std::cout << "Corner: (" << corner.x << ", " << corner.y << ")" << std::endl;
         cv::circle(cornersImage, corner, 5, cv::Scalar(255, 0, 0), -1); // Draw corners
     }
 
+    // Sort the corners to ensure they are in top-left, top-right, bottom-right, bottom-left order
+    std::sort(cornersList.begin(), cornersList.end(), [](const cv::Point2f &a, const cv::Point2f &b) {
+        return a.y < b.y;  // Sort based on y-coordinate first
+    });
 
+    std::vector<cv::Point2f> sortedCorners(4);
+    std::vector<cv::Point2f> top(2), bottom(2);
+
+    top[0] = cornersList[0];
+    top[1] = cornersList[1];
+    bottom[0] = cornersList[2];
+    bottom[1] = cornersList[3];
+
+    // Sort top and bottom by x-coordinate
+    if (top[0].x < top[1].x) {
+        sortedCorners[0] = top[0];  // top-left
+        sortedCorners[1] = top[1];  // top-right
+    } else {
+        sortedCorners[0] = top[1];  // top-left
+        sortedCorners[1] = top[0];  // top-right
+    }
+
+    if (bottom[0].x < bottom[1].x) {
+        sortedCorners[3] = bottom[0];  // bottom-left
+        sortedCorners[2] = bottom[1];  // bottom-right
+    } else {
+        sortedCorners[3] = bottom[1];  // bottom-left
+        sortedCorners[2] = bottom[0];  // bottom-right
+    }
+
+    // Define destination points based on the bounding box of the detected corners
+    std::vector<cv::Point2f> dstPoints = {
+        cv::Point2f(0, 0),                      // top-left
+        cv::Point2f(Image.cols - 1, 0),         // top-right
+        cv::Point2f(Image.cols - 1, Image.rows - 1), // bottom-right
+        cv::Point2f(0, Image.rows - 1)          // bottom-left
+    };
+
+    // Get the transformation matrix
+    cv::Mat perspectiveMatrix = cv::getPerspectiveTransform(sortedCorners, dstPoints);
+
+    // Warp the perspective
+    cv::Mat warpedImage;
+    cv::warpPerspective(Image, warpedImage, perspectiveMatrix, Image.size());
+
+    // Show the warped image
+    cv::imshow("Warped Image", warpedImage);
     cv::imshow("Input", Image);
     cv::imshow("graymask", graymask);
     cv::imshow("mask", mask);
     cv::imshow("corners", cornersImage);
-    cv::imwrite("output.jpg", mask);
+    cv::imwrite("output.jpg", warpedImage);
+
     system("C:/Users/Amir/Documents/qtdocscan/run.bat");
 }
-
-
-
 
 MainWindow::~MainWindow()
 {
@@ -77,8 +118,8 @@ void MainWindow::on_pushButton_clicked() {
     using namespace cv;
     VideoCapture cap(0);
     if (!cap.isOpened()) {
-    cerr << "ERROR! Unable to open camera\n";
-    return;
+        cerr << "ERROR! Unable to open camera\n";
+        return;
     }
 
     Mat frame;
@@ -107,19 +148,14 @@ void MainWindow::on_pushButton_clicked() {
             confirm confirm;
             confirm.setModal(true);
             confirm.exec();
-            //display input.jpg in confirmation.ui
-            // Open the confirmation form with screenshot <--------------------------
         }
 
         if (screenshot == 27) {
             cout << "Terminating..." << endl;
-
             destroyWindow(windowName.c_str());
             break;
         }
     }
-//convert jpg to pdf and add download button
+
     cap.release();
 }
-
-
