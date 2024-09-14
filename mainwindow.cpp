@@ -7,7 +7,9 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "confirm.h"
-
+#include "QFileDialog"
+#include "QMessageBox"
+//move image processing to the window that opens when you click "upload image" or confirm camera capture
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -98,11 +100,11 @@ MainWindow::MainWindow(QWidget *parent)
     cv::warpPerspective(Image, warpedImage, perspectiveMatrix, Image.size());
 
     // Show the warped image
-    cv::imshow("Warped Image", warpedImage);
-    cv::imshow("Input", Image);
-    cv::imshow("graymask", graymask);
-    cv::imshow("mask", mask);
-    cv::imshow("corners", cornersImage);
+    //cv::imshow("Warped Image", warpedImage);
+    //cv::imshow("Input", Image);
+    //cv::imshow("graymask", graymask);
+    //cv::imshow("mask", mask);
+    //cv::imshow("corners", cornersImage);
     cv::imwrite("output.jpg", warpedImage);
 
     system("C:/Users/Amir/Documents/qtdocscan/run.bat");
@@ -159,3 +161,10 @@ void MainWindow::on_pushButton_clicked() {
 
     cap.release();
 }
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString file_name = QFileDialog::getOpenFileName(this, "Open File", "C://");
+}
+

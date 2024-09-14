@@ -15,6 +15,9 @@ public:
     explicit confirm(QWidget *parent = nullptr);
     ~confirm();
 
+private slots:
+
+
 private:
     Ui::confirm *ui;
 };

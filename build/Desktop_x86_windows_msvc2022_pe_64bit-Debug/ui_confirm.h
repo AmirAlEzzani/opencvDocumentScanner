@@ -36,11 +36,11 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         confirmImg = new QLabel(confirm);
         confirmImg->setObjectName("confirmImg");
-        confirmImg->setGeometry(QRect(100, 20, 711, 441));
+        confirmImg->setGeometry(QRect(230, 100, 521, 301));
 
         retranslateUi(confirm);
-        QObject::connect(buttonBox, &QDialogButtonBox::accepted, confirm, qOverload<>(&QDialog::accept));
         QObject::connect(buttonBox, &QDialogButtonBox::rejected, confirm, qOverload<>(&QDialog::reject));
+        QObject::connect(buttonBox, &QDialogButtonBox::accepted, confirm, qOverload<>(&QDialog::accept));
 
         QMetaObject::connectSlotsByName(confirm);
     } // setupUi
