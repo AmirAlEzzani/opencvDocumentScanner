@@ -9,6 +9,9 @@
 #include "confirm.h"
 #include "QFileDialog"
 #include "QMessageBox"
+#include <windows.h>
+
+
 //move image processing to the window that opens when you click "upload image" or confirm camera capture
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -165,6 +168,14 @@ void MainWindow::on_pushButton_clicked() {
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QString file_name = QFileDialog::getOpenFileName(this, "Open File", "C://");
+    QString sourcePath = QFileDialog::getOpenFileName(0, tr("Select Image"), ".", tr("Images (*.png *.xpm *.jpg *.jpeg *.bmp)"));
+    QString destinationPath = QDir::currentPath() + "/copied_image.jpg";  // Save the copied image to the script's directory
+
+    if (QFile::copy(sourcePath, destinationPath)) {
+        qDebug() << "Image copied successfully to: " << destinationPath;
+    } else {
+        qDebug() << "Failed to copy the image.";
+    }
+
 }
 
