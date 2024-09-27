@@ -111,7 +111,7 @@ void confirm::on_pushButton_clicked()
     cv::warpPerspective(Image, warpedImage, perspectiveMatrix, Image.size());
 
     // Show the warped image
-    cv::imshow("Warped Image", warpedImage);
+    //cv::imshow("Warped Image", warpedImage);
     //cv::imshow("Input", Image);
     //cv::imshow("graymask", graymask);
     //cv::imshow("mask", mask);
