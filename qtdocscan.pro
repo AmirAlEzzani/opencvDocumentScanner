@@ -10,15 +10,18 @@ CONFIG += c++17
 
 SOURCES += \
     confirm.cpp \
+    download.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     confirm.h \
+    download.h \
     mainwindow.h
 
 FORMS += \
     confirm.ui \
+    download.ui \
     mainwindow.ui
 
 # Default rules for deployment.

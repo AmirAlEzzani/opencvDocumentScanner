@@ -10,37 +10,40 @@
 #define UI_CONFIRM_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_confirm
 {
 public:
-    QDialogButtonBox *buttonBox;
     QLabel *confirmImg;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QLabel *label;
 
     void setupUi(QDialog *confirm)
     {
         if (confirm->objectName().isEmpty())
             confirm->setObjectName("confirm");
         confirm->resize(893, 596);
-        buttonBox = new QDialogButtonBox(confirm);
-        buttonBox->setObjectName("buttonBox");
-        buttonBox->setGeometry(QRect(190, 470, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         confirmImg = new QLabel(confirm);
         confirmImg->setObjectName("confirmImg");
         confirmImg->setGeometry(QRect(230, 100, 521, 301));
+        pushButton = new QPushButton(confirm);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(330, 450, 80, 24));
+        pushButton_2 = new QPushButton(confirm);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(560, 450, 80, 24));
+        label = new QLabel(confirm);
+        label->setObjectName("label");
+        label->setGeometry(QRect(430, 50, 171, 41));
 
         retranslateUi(confirm);
-        QObject::connect(buttonBox, &QDialogButtonBox::rejected, confirm, qOverload<>(&QDialog::reject));
-        QObject::connect(buttonBox, &QDialogButtonBox::accepted, confirm, qOverload<>(&QDialog::accept));
 
         QMetaObject::connectSlotsByName(confirm);
     } // setupUi
@@ -49,6 +52,9 @@ public:
     {
         confirm->setWindowTitle(QCoreApplication::translate("confirm", "Dialog", nullptr));
         confirmImg->setText(QCoreApplication::translate("confirm", "TextLabel", nullptr));
+        pushButton->setText(QCoreApplication::translate("confirm", "Use", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("confirm", "Retake", nullptr));
+        label->setText(QCoreApplication::translate("confirm", "Use this image?", nullptr));
     } // retranslateUi
 
 };
